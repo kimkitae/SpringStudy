@@ -1,6 +1,7 @@
 package spring;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,47 +19,44 @@ public class MainForMemberDao {
 		
 		memberDao = ctx.getBean("memberDao",MemberDao.class);
 		
-		selectAll();
-		updateMember();
-		insertMember();
-		
+	
+//		insertMember();
+		table();
 		ctx.close();
 		
 		
 		
 	}
 	
-	private static void selectAll(){
-		System.out.println("---selectAll");
-		int total = memberDao.count();
-		System.out.println("ÀüÃ¼ µ¥ÀÌÅÍ" + total);
-		List<Member> members = memberDao.selectAll();
-		for(Member m : members){
-			System.out.println(m.getId() + ":" + m.getEmail() + ":" + m.getName() + ":" + m.getPassword());
+	
+	private static void table(){
+		
+		List<String> dd = memberDao.showtt();
+		for (String string : dd) {
+			System.out.println(string);
 		}
-		
 	}
-	private static void updateMember(){
-		System.out.println("----updateMember");
-		Member member = memberDao.selectByEmail("daearcdo@gmail.com");
-		String oldPw = member.getPassword();
-		String newPw = Double.toHexString(Math.random());
-		member.changePassword(oldPw, newPw);
-		
-		memberDao.update1(member);
-		System.out.println("¾ÏÈ£º¯°æ " + oldPw + ">" + newPw);
-		
-	}
+//	private static void updateMember(){
+//		System.out.println("----updateMember");
+//		Member member = memberDao.selectByEmail("daearcdo@gmail.com");
+//		String oldPw = member.getPassword();
+//		String newPw = Double.toHexString(Math.random());
+//		member.changePassword(oldPw, newPw);
+//		
+//		memberDao.update1(member);
+//		System.out.println("ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ " + oldPw + ">" + newPw);
+//		
+//	}
 	
-	private static void insertMember(){
-		System.out.println("----insertMember");
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MMddHHmmss");
-		String prefix = dateFormat.format(new Date());
-		Member member = new Member(prefix + "@test.com",prefix,prefix,new Date());
-		memberDao.insert(member);
-		System.out.println(member.getId()+ " µ¥ÀÌÅÍ Ãß°¡");
-		
-	}
-	
+//	private static void insertMember(){
+//		System.out.println("----insertMember");
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("MMddHHmmss");
+//		String prefix = dateFormat.format(new Date());
+//		Member member = new Member(prefix + "@test.com",prefix,prefix,new Date());
+//		memberDao.insert(member);
+//		System.out.println(member.getId()+ " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½");
+//		
+//	}
+//	
 	
 }

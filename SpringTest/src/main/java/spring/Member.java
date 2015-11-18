@@ -1,45 +1,38 @@
 package spring;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Member {
 
-	private Long id;
-	private String email;
-	private String password;
+	private int num;
+	private String service;
 	private String name;
-	private Date registerDate;
-	
-	public Member(String email, String password, String name, Date registerDate){
-		this.email = email;
-		this.password = password;
+	private float result;
+	private Timestamp time;
+
+	public Member(String service, String name, Float result, Timestamp time) {
+		this.service = service;
 		this.name = name;
-		this.registerDate = registerDate;
-		
+		this.result = result;
+		this.time = time;
+
 	}
 
-	public Long getId() {
-		return id;
+	public int getNum() {
+		return num;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setNum(int num) {
+		this.num = num;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getService() {
+		return service;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setService(String service) {
+		this.service = service;
 	}
 
 	public String getName() {
@@ -50,18 +43,20 @@ public class Member {
 		this.name = name;
 	}
 
-	public Date getRegisterDate() {
-		return registerDate;
+	public float getResult() {
+		return result;
 	}
 
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
+	public void setResult(float result) {
+		this.result = result;
 	}
-	
-	public void changePassword(String oldPassword, String newPassword){
-	//	if(!password.equals(oldPassword)) throw new IdPasswordNotMatchingException();
-		this.password = newPassword;
-		
+
+	public Timestamp getTime() {
+		return time;
 	}
-	
+
+	public void setTime(Timestamp time) {
+		this.time = time;
+	}
+
 }
