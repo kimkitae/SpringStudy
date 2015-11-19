@@ -7,8 +7,12 @@
 	<title>Home</title>
 </head>
 <body>
+<a href="http://localhost:8080/spring/marco">매크로 관리</a><br>
 <form name="tablesend" action="/result" method="get">
-<h1>소모 전류 측정 값</h1>
+
+<h1>소모 전류 측정 값</h1><br>
+<%-- <a href="http://10.203.204.13:8080/spring/result?service=${table}" target="_blank">${table} --%>
+
 <table border="1" style="width: 100%">
 <tr>
 <th>Service </th>
@@ -22,7 +26,7 @@
 </tr>
 </c:forEach>
 </table>
-<input type="submit" value="전송"/>
-</form>
+
+<!-- </form> -->
 </body>
 </html>

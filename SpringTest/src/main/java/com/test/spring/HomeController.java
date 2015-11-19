@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import macro.ExtendThread;
+import spring.Macro;
 import spring.Member;
 import spring.MemberDao;
 
@@ -28,6 +30,7 @@ import spring.MemberDao;
 @Controller
 public class HomeController {
 	private static MemberDao memberDao;
+	private static ExtendThread et;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
@@ -77,5 +80,5 @@ public class HomeController {
 		return mv;
 
 	}
-
+	
 }

@@ -8,6 +8,5 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 
-<bean class="com.test.spring.HelloController"/>
-
+<bean class="com.test.spring.MacroController"/>
 </beans>

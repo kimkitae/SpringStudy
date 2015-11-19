@@ -24,6 +24,26 @@ public class MemberDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 
 	}
+	
+	
+	public List<Macro> macroselete() {
+
+		List<Macro> results = jdbcTemplate.query("select * from macro", new RowMapper<Macro>() {
+
+			@Override
+			public Macro mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Macro macro = new Macro(rs.getString("stats"), rs.getString("result"), rs.getTimestamp("time"));
+				macro.setNum(rs.getInt("num"));
+
+				// TODO Auto-generated method stub
+				return macro;
+			}
+
+		});
+		return results;
+	}
+	
+	
 
 	public Member selectByEmail(String service) {
 		List<Member> results = jdbcTemplate.query("select * from exceltest where service= ?", new RowMapper<Member>() {
@@ -42,27 +62,26 @@ public class MemberDao {
 		return results.isEmpty() ? null : results.get(0);
 	}
 
-	public void insert(final Member member) {
+	public void macroInsert(final Macro macro) {
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
 			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-				PreparedStatement pstmt = con.prepareStatement("insert into exceltest(num,service,name,result,time)" + "values(?,?,?,?,?)",new String[] {"ID"});
+				PreparedStatement pstmt = con.prepareStatement("insert into macro(stats,result)" + "values(?,?)",new String[] {"num"});
 				
 				
-				pstmt.setInt(1, member.getNum());
-				pstmt.setString(2, member.getService());
-				pstmt.setString(3, member.getName());
-				pstmt.setFloat(4, member.getResult());
+				//pstmt.setInt(1, macro.getNum());
+				pstmt.setString(1, macro.getStats());
+				pstmt.setString(2, macro.getResult());
 				
-				pstmt.setTimestamp(5, new Timestamp(member.getTime().getTime()));
+				//pstmt.setTimestamp(4, new Timestamp(macro.getTime().getTime()));
 				// TODO Auto-generated method stub
 				return pstmt;
 			}
 		},keyHolder);
 		Number keyValue = keyHolder.getKey();
-		member.setNum(keyValue.intValue());
+		macro.setNum(keyValue.intValue());
 
 	}
 
