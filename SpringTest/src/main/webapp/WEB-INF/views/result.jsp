@@ -32,7 +32,7 @@
 			<tr>
 				<td>${cal.getNum()}</td>
 				<td>${cal.getService()}</td>
-				<td>${cal.getName()}</td>
+				<td><a href="http://10.203.204.13:8080/spring/value?tc=${cal.getName()}&service=${cal.getService()}" target="_blank">${cal.getName()}</td>
 				<td><fmt:formatNumber value="${cal.getResult()}" pattern="0.00"/> </td>
 				<td>${cal.getTime()}</td>
 			</tr>

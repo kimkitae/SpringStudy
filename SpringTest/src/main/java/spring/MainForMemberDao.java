@@ -10,6 +10,7 @@ import org.omg.CORBA.Current;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.ModelAndView;
 
 public class MainForMemberDao {
 
@@ -21,7 +22,9 @@ public class MainForMemberDao {
 
 		memberDao = ctx.getBean("memberDao", MemberDao.class);
 
-		insertMember();
+		// insertMember();
+		innertable();
+
 		ctx.close();
 
 	}
@@ -33,6 +36,7 @@ public class MainForMemberDao {
 			System.out.println(string);
 		}
 	}
+
 	// private static void updateMember(){
 	// System.out.println("----updateMember");
 	// Member member = memberDao.selectByEmail("daearcdo@gmail.com");
@@ -50,6 +54,17 @@ public class MainForMemberDao {
 		Macro macro = new Macro("항항", "sueee");
 		memberDao.macroInsert(macro);
 		System.out.println(macro.getNum() + " ������ �߰�");
+
+	}
+
+	private static void innertable() {
+
+		String service = "ocb";
+		String tc = "스크린온";
+
+		List<voltvalues> members = memberDao.seletetable(service, tc);
+		System.out.println(service + " / " + tc);
+		System.out.println(members.get(0).toString());
 
 	}
 }

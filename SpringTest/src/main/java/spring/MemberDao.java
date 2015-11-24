@@ -28,7 +28,7 @@ public class MemberDao {
 	
 	public List<Macro> macroselete() {
 
-		List<Macro> results = jdbcTemplate.query("select * from macro", new RowMapper<Macro>() {
+		List<Macro> results = jdbcTemplate.query("select * from macro ORDER BY num DESC", new RowMapper<Macro>() {
 
 			@Override
 			public Macro mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -42,6 +42,7 @@ public class MemberDao {
 		});
 		return results;
 	}
+	
 	
 	
 
@@ -122,6 +123,28 @@ public class MemberDao {
 		});
 		return results;
 	}
+	
+	
+	public List<voltvalues> voltvalue(String tables) {
+
+		List<voltvalues> results = jdbcTemplate.query("select * from "+tables, new RowMapper<voltvalues>() {
+
+			@Override
+			public voltvalues mapRow(ResultSet rs, int rowNum) throws SQLException {
+				voltvalues member = new voltvalues(rs.getString("service"), rs.getString("device"), rs.getString("tc"),rs.getInt("round"),rs.getString("logcat"),rs.getString("dump"),rs.getString("average"));
+				member.setNum(rs.getInt("num"));
+
+				
+				
+				// TODO Auto-generated method stub
+				return member;
+			}
+
+		});
+		return results;
+	}
+	
+	
 		public List<Member> showtable() {
 
 			List<Member> results = jdbcTemplate.query("SHOW TABLE", new RowMapper<Member>() {
@@ -153,6 +176,23 @@ public class MemberDao {
 		return table;
 		
 		
+	}
+	
+	public List<voltvalues> seletetable(final String service, final String tc) {
+
+//		List<voltvalues> results = jdbcTemplate.query("select * from voltvalues INNER JOIN "+service+" on voltvalues.service = "+service+".service and voltvalues.tc = "+service+".name Where voltvalues.tc =" +service+".name", new RowMapper<voltvalues>() {
+			List<voltvalues> results = jdbcTemplate.query("select * from voltvalues INNER JOIN ocb on voltvalues.service = ocb.service", new RowMapper<voltvalues>() {
+
+			@Override
+			public voltvalues mapRow(ResultSet rs, int rowNum) throws SQLException {
+				voltvalues member = new voltvalues(rs.getString("service"), rs.getString("device"), rs.getString("tc"),rs.getInt("round"),rs.getString("logcat"),rs.getString("dump"),rs.getString("average"));
+				member.setNum(rs.getInt("num"));
+				// TODO Auto-generated method stub
+				return member;
+			}
+
+		});
+		return results;
 	}
 
 }

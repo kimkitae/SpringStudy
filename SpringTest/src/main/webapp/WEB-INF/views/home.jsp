@@ -7,7 +7,7 @@
 	<title>Home</title>
 </head>
 <body>
-<a href="http://localhost:8080/spring/marco">매크로 관리</a><br>
+<a href="http://localhost:8080/spring/macro">매크로 관리</a><br>
 <form name="tablesend" action="/result" method="get">
 
 <h1>소모 전류 측정 값</h1><br>

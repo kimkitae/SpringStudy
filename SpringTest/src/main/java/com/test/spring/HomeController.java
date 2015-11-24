@@ -23,6 +23,7 @@ import macro.ExtendThread;
 import spring.Macro;
 import spring.Member;
 import spring.MemberDao;
+import spring.voltvalues;
 
 /**
  * Handles requests for the application home page.
@@ -48,18 +49,25 @@ public class HomeController {
 		ctx.close();
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home");
+		mv.setViewName("index");
 		mv.addObject("tables", table);
 
 		return mv;
 	}
 
-	@RequestMapping(value = "/result1")
+	@RequestMapping(value = "/javatest")
 	public String home2() {
 
-		return "result";
+		return "javatest";
 	}
 
+	@RequestMapping(value = "/index")
+	public String index() {
+
+		return "index";
+	}
+
+	
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public ModelAndView result(HttpServletRequest request) {
 
@@ -68,17 +76,42 @@ public class HomeController {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:appCtx.xml");
 
 		memberDao = ctx.getBean("memberDao", MemberDao.class);
-
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("result");
+		if (service.equals("macro")) {
 
-		List<Member> members = memberDao.selectAll(service);
+			mv.setViewName("macro");
 
-		mv.addObject("service", members);
+			List<Macro> macros = memberDao.macroselete();
+
+			mv.addObject("macros", macros);
+			if (macros.size() == 0) {
+
+				mv.addObject("laststats", macros);
+			} else {
+
+				// mv.addObject("laststats",
+				// macros.get(macros.size()-1).getStats());
+
+				mv.addObject("laststats", macros.get(0).getStats());
+			}
+
+		} else if (service.equals("voltvalues")) {
+
+			mv.setViewName("table1");
+			List<voltvalues> members = memberDao.voltvalue(service);
+			mv.addObject("members", members);
+
+		} else {
+
+			mv.setViewName("result");
+
+			List<Member> members = memberDao.selectAll(service);
+
+			mv.addObject("service", members);
+		}
 		ctx.close();
-
 		return mv;
 
 	}
-	
+
 }
