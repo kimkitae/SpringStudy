@@ -57,7 +57,7 @@
 					<li><a
 						href="http://10.203.204.13:8080/spring/result?service=tmap">Tmap</a></li>
 				</ul></li>
-			<li><a href="http://localhost:8080/spring/macro">Macro<i><b></b></i></a></li>
+			<li><a href="http://10.203.204.13:8080/spring/macro">Macro<i><b></b></i></a></li>
 
 		</ul>
 		<div id="combo-holder"></div>

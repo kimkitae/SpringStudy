@@ -108,6 +108,7 @@ public class HomeController {
 			List<Member> members = memberDao.selectAll(service);
 
 			mv.addObject("service", members);
+			mv.addObject("service1" , service);
 		}
 		ctx.close();
 		return mv;

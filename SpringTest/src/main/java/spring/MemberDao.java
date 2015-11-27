@@ -8,6 +8,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 import javax.sql.DataSource;
 
@@ -178,11 +181,10 @@ public class MemberDao {
 		
 	}
 	
-	public List<voltvalues> seletetable(final String service, final String tc) {
-
-//		List<voltvalues> results = jdbcTemplate.query("select * from voltvalues INNER JOIN "+service+" on voltvalues.service = "+service+".service and voltvalues.tc = "+service+".name Where voltvalues.tc =" +service+".name", new RowMapper<voltvalues>() {
-			List<voltvalues> results = jdbcTemplate.query("select * from voltvalues INNER JOIN ocb on voltvalues.service = ocb.service", new RowMapper<voltvalues>() {
-
+	public List<voltvalues> seletetable(String service, String tc) {
+			
+//		List<voltvalues> results = jdbcTemplate.query("select * from voltvalues INNER JOIN " + service + " on voltvalues.tc = " + service + ".name and voltvalues.service = " + service +".service where "+service+".name = "+"'"+tc+"'" , new RowMapper<voltvalues>() {
+			List<voltvalues> results = jdbcTemplate.query("select * from voltvalues where service= "+"'"+service+"'" + "AND tc = "+"'"+tc+"'" , new RowMapper<voltvalues>() {
 			@Override
 			public voltvalues mapRow(ResultSet rs, int rowNum) throws SQLException {
 				voltvalues member = new voltvalues(rs.getString("service"), rs.getString("device"), rs.getString("tc"),rs.getInt("round"),rs.getString("logcat"),rs.getString("dump"),rs.getString("average"));
