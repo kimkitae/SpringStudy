@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+String dev = "http://localhost:8080/spring/";
+String prod = "http://daearcdo.cafe24.com/www/";
+String url = dev;
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -32,7 +37,7 @@
 	<header> <!-- header wrapper -->
 	<div class="wrapper cf">
 		<div id="logo">
-			<a href="http://10.203.204.13:8080/spring/index"><img
+			<a href="<%=url%>index"><img
 				src="resources/html/img/newlogo.png" alt="" /></a>
 		</div>
 	</div>
@@ -40,20 +45,20 @@
 	<div class="wrapper cf">
 		<ul id="nav" class="sf-menu">
 			<li class="current-menu-item"><a
-				href="http://10.203.204.13:8080/spring/index">HOME<i><b></b></i></a></li>
+				href="<%=url%>index">HOME<i><b></b></i></a></li>
 			<li><a
-				href="http://10.203.204.13:8080/spring/result?service=voltvalues">DATA<i><b></b></i></a>
+				href="<%=url%>result?service=voltvalues">DATA<i><b></b></i></a>
 				<ul>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=ocb">OCB</a></li>
+						href="<%=url%>result?service=ocb">OCB</a></li>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=syrup">Syrup</a></li>
+						href="<%=url%>result?service=syrup">Syrup</a></li>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=sdk">통합SDK</a></li>
+						href="<%=url%>result?service=sdk">통합SDK</a></li>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=tmap">Tmap</a></li>
+						href="<%=url%>result?service=tmap">Tmap</a></li>
 				</ul></li>
-			<li><a href="http://10.203.204.13:8080/spring/macro">Macro<i><b></b></i></a></li>
+			<li><a href="<%=url%>macro">Macro<i><b></b></i></a></li>
 
 		</ul>
 		<div id="combo-holder"></div>
@@ -69,8 +74,7 @@
 
 			<!-- headline -->
 			<div class="headline">
-				${service1} </br>
-				총 TC : ${service.size()} 건
+				${service1} </br> 총 TC : ${service.size()} 건
 			</div>
 			<!-- ENDS headline -->
 
@@ -80,10 +84,10 @@
 
 			<table
 				style="border: 2px solid gray; width: 60%; height: 100px; margin: auto; text-align: center;">
-				
+
 				<tr>
 					<th style="border: 1px solid gray;">번호</th>
-<!-- 					<th style="border: 1px solid gray;">서비스명</th> -->
+					<!-- 					<th style="border: 1px solid gray;">서비스명</th> -->
 					<th style="border: 1px solid gray;">TC명</th>
 					<th style="border: 1px solid gray;">평균 소모 값</th>
 					<th style="border: 1px solid gray;">생성시간</th>
@@ -100,9 +104,9 @@
 						<c:forEach var="cal" items="${service}">
 							<tr>
 								<td style="border: 1px solid gray;">${cal.getNum()}</td>
-<%-- 								<td style="border: 1px solid gray;">${cal.getService()}</td> --%>
+								<%-- 								<td style="border: 1px solid gray;">${cal.getService()}</td> --%>
 								<td style="border: 1px solid gray;"><a
-									href="http://10.203.204.13:8080/spring/value?tc=${cal.getName()}&service=${cal.getService()}"
+									href="<%=url%>value?tc=${cal.getName()}&service=${cal.getService()}"
 									target="_blank">${cal.getName()}</td>
 								<td style="border: 1px solid gray;"><fmt:formatNumber
 										value="${cal.getResult()}" pattern="0.00" /></td>
