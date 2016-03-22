@@ -1,6 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<%
+	String dev = "http://localhost:8080/spring/";
+	String prod = "http://daearcdo.cafe24.com/www/";
+	String url = dev;
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -41,7 +47,7 @@
 	function init() {
 
 		var laststats = "${laststats}";
-		var laststatssize = "${macros.size()}"
+		var laststatssize = "${fn:length(macros)}"
 
 		if (laststatssize >= 1) {
 
@@ -76,7 +82,7 @@
 	<header> <!-- header wrapper -->
 	<div class="wrapper cf">
 		<div id="logo">
-			<a href="http://10.203.204.13:8080/spring/index"><img
+			<a href="<%=url%>index"><img
 				src="resources/html/img/newlogo.png" alt="" /></a>
 		</div>
 	</div>
@@ -84,20 +90,20 @@
 	<div class="wrapper cf">
 		<ul id="nav" class="sf-menu">
 			<li class="current-menu-item"><a
-				href="http://10.203.204.13:8080/spring/index">HOME<i><b></b></i></a></li>
+				href="<%=url%>index">HOME<i><b></b></i></a></li>
 			<li><a
-				href="http://10.203.204.13:8080/spring/result?service=voltvalues">DATA<i><b></b></i></a>
+				href="<%=url%>result?service=voltvalues">DATA<i><b></b></i></a>
 				<ul>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=ocb">OCB</a></li>
+						href="<%=url%>result?service=ocb">OCB</a></li>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=syrup">Syrup</a></li>
+						href="<%=url%>result?service=syrup">Syrup</a></li>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=sdk">통합SDK</a></li>
+						href="<%=url%>result?service=sdk">통합SDK</a></li>
 					<li><a
-						href="http://10.203.204.13:8080/spring/result?service=tmap">Tmap</a></li>
+						href="<%=url%>result?service=tmap">Tmap</a></li>
 				</ul></li>
-			<li><a href="http://10.203.204.13:8080/spring/macro">Macro<i><b></b></i></a></li>
+			<li><a href="<%=url%>macro">Macro<i><b></b></i></a></li>
 
 		</ul>
 		<div id="combo-holder"></div>
@@ -137,7 +143,8 @@
 					<!-- 			<th>성공여부</th> -->
 					<!-- 			<th>실행시간</th> -->
 				</tr>
-				<c:set var="size" value="${macros.size()}" />
+				<c:set var="size" value="${fn:length(macros)}" />
+				
 				<c:choose>
 					<c:when test="${size eq 0}">
 						<tr>

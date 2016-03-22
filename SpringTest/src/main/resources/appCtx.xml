@@ -10,9 +10,10 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost/test" />
-		<property name="user" value="root" />
-		<property name="password" value="helpdesk" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost/daearcdo" />
+		
+		<property name="user" value="daearcdo" />
+		<property name="password" value="skdltn123" />
 	</bean>
 
 	<bean id="memberDao" class="spring.MemberDao">

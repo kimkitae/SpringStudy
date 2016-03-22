@@ -41,11 +41,13 @@ public class MacroController {
 		if(macros.size() == 0){
 			
 			mv.addObject("laststats", macros);
+		System.out.println(macros);
 		}else{
 			
 //			mv.addObject("laststats", macros.get(macros.size()-1).getStats());
 			
 			mv.addObject("laststats", macros.get(0).getStats());
+			System.out.println(macros.get(0).getStats());
 		}
 		
 		ctx.close();
