@@ -1,0 +1,502 @@
+@charset "utf-8";
+
+@media screen and (max-width:767px) {
+    /*common*/
+    body {
+        font-size: 100%;
+    }
+    /*layout*/
+    #wrap {
+        min-width:320px;
+        width: 100%;
+        height:auto;
+        overflow: hidden;
+        background: #eee;
+    }
+    #top_bar {
+        display: none;
+    }
+    #header {
+        clear: both;
+        position: fixed;
+        z-index: 1000;
+    }
+    #nav {
+        position: absolute;
+        top: 83px;
+        left: -200%;
+        /*JVS
+		if #menu click, #nav's attr('left':'0');
+		*/
+        z-index: 999;
+    }
+    #contents {
+        clear: both;
+        position: relative;
+        top: 80px;
+        float: left;
+        background: #fff;
+    }
+    #footer {
+        clear: both;
+    }
+    /*header*/
+    #header h1 {
+        margin-left: 10px;
+        font-size: 225%;
+    }
+    .mob_menu,
+    .mob_profile {
+        display: block;
+        width: 10%;
+        height: 100%;
+        /*background: #f00;*/
+    }
+    .mob_menu {
+        float: left;
+        margin-left: 3px;
+    }
+    .mob_menu img {
+        float: left;
+    }
+    .mob_profile {
+        float: right;
+        margin-right: 3px;
+    }
+    .mob_profile img {
+        float: right;
+        /*margin-top:25%;*/
+    }
+    .mob_menu img,
+    .mob_profile img {
+        width: 40px;
+        heigt: 40px;
+        margin-top: 20px;
+    }
+    .search {
+        display: none;
+    }
+    /*nav*/
+    #nav {
+        display: block;
+        height: auto;
+        background: #eee;
+        box-shadow: 5px 5px 5px;
+    }
+    #nav>ul>li {
+        width: 100%;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #bbb;
+    }
+    #nav>ul>li>a {
+        padding: 0 0 0 15px;
+        margin-bottom: 0px;
+        height: 40px;
+        line-height: 40px;
+        text-align: left;
+    }
+    #nav>ul>li>a:hover,
+    #nav>ul>li>a:focus {
+        line-height: 40px;
+        font-weight: 800;
+    }
+    #nav>ul>li>a.now_on {
+        line-height: 40px;
+        font-weight: 800;
+        text-decoration: underline;
+    }
+    #nav>ul>li:nth-child(1) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(2) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(3) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(4) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(5) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(6) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(7) .lnb ul {
+        margin-left: 10px;
+    }
+    #nav>ul>li:nth-child(8) .lnb ul {
+        float: left;
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    #nav>ul>li:nth-child(9) .lnb ul {
+        float: left;
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    #nav .service {
+        width: 100%;
+        /*float:right;*/
+    }
+    #nav .service .lnb {
+        box-shadow: none;
+    }
+    #nav .service .lnb li a {
+        width: 100%;
+        padding: 0 5px;
+    }
+    #nav .lnb {
+        /*display:block;*/
+        position: static;
+        width: 100%;
+        /*background: #aaa;*/
+        background: #ddd;
+        box-shadow: none;
+        padding-bottom: 25px;
+    }
+    #nav .lnb ul {
+        float: left;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #nav .lnb>ul>li {
+        width: 50%;
+        margin: 0;
+    }
+    #nav .lnb>ul>li>a {
+        font-size: 1.25em;
+        padding: 5px 2.5%;
+        width: 45%;
+    }
+    /*content*/
+    .fullbanner {
+        width: 100%;
+        height: 400px;
+        position: relative;
+        top: 0;
+        clear: both;
+    }
+    .bannerindex .oddnum{
+    	display:block;
+    }
+    .banner_L_btn,
+    .banner_R_btn {
+        z-index: 980;
+        position: absolute;
+        width: 26px;
+        line-height: 64px;
+        top: 15%;
+        background: transparent;
+        background: url();
+    }
+    .banner_L_btn a img,
+    .banner_R_btn a img {
+        width: 100%;
+    }
+    .banneritem {
+        overflow-x: scroll;
+    }
+    .banneritem_li {
+        width: 360px;
+        float: left;
+        /*position: relative;*/
+    }
+    .banneritem_image img {
+        width: 100%;
+    }
+    .banneritem_text {
+        height: auto;
+    }
+    .banneritem span {
+        display: none;
+    }
+    /*itembox*/
+    .newlist_item>ul>li:nth-child(odd) {
+        margin-left: 2%;
+    }
+    .itembox {
+        width: 49%;
+        margin-left: 0%;
+        float: left;
+        margin-bottom: 10px;
+    }
+    .item_title_category {
+        display: block;
+    }
+    .item_title_text {
+        margin-top: 5px;
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
+        /*word-break:break-all;*/
+    }
+    .item_image .itemtag span img {
+        text-align: right;
+        width: 16px;
+    }
+    .item_btn {
+        margin-top: 8px;
+        width: 100%;
+        display: block;
+        float: left;
+    }
+    .item_btn a {
+        float: left;
+        margin-left: 1px;
+    }
+    .item_btn a img {
+        width: 24px;
+        height: 24px;
+    }
+    /*weelky 12*/
+    .bestlist_left,
+    .bestlist_right {
+        display: none;
+    }
+    /**
+		 * bestlist item 의 width는 javascript를 통해 설정한다.
+		 * 모바일의 경우 화면 폭의 1/2.3으로 지정하며,
+		 * bestlist_scroll 의 width는  bestlist_item.width()*12러로 한다.
+		 */
+	.bestlist{
+		position: relative;
+	}
+    .bestlist_scroll {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .bestlist_scroll ol li .bestlist_box {
+        height: auto;
+        line-height: auto;
+        position: relative;
+    }
+    .bestlist .bestlist_title {
+        position: absolute;
+        float: left;
+        bottom: 0;
+        /*top:100%;*/
+        height: auto;
+        z-index: 999;
+    }
+    .listgroup {
+        float: left;
+    }
+
+
+    /*login.html*/
+    .signin_banner{
+        display:none;
+    }
+    .signin_box_inner{
+        float: left;
+        width:auto;
+        width: 100%;
+    }
+    .half_box{
+        width:97%;
+        margin: 0;
+        padding: 10px 1% 20px 1%;
+        /*background: #edd;*/
+        float: left;
+        /*height:360px;*/
+        background: #fff;
+        height: 100%;
+    }
+    .full_box{
+        width:96%;
+        float: left;
+        background: #fff;
+        padding: 10px 1% 20px 1%;
+        margin: 0;
+    }
+    .signin_box,
+    .join_box{
+        /*float: left;*/
+        width: 97%;
+        position: static;
+        /*left:50%;*/
+        /*margin: 0 auto;*/
+        /*margin-left:-350px;*/
+        /*height:400px;*/
+        left:0;
+        margin-left: 0;
+        background: #fff;
+        border: 3px solid #ddd;
+        box-shadow:none;
+
+        display: table;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+    }
+    .input_design{
+        height:auto;
+        position: relative;
+        padding-bottom:12px;
+    }
+    .input_design label{
+        margin-right:10px;
+        font-size: 1.25em;
+        font-weight:bold;
+    }
+    .input_design .inputform,
+    .input_design .birthdate_input{
+        font-size:1.25em;
+        display:block;
+        margin-top: 3px;
+        border-left: 2px solid green;
+        width: 98%;
+        height: 30px;
+    }
+    .join_warning{
+        width:100%;
+        text-align:right;
+        position: absolute;
+        right: 0;
+        /*top: 10px;*/
+        bottom: -25px;
+    }
+    #join_warning_agree1_no,
+    #join_warning_agree2_no{
+        position: relative;
+        right: 0;
+        bottom:-10px;
+
+    }
+    .join_btn{
+        margin-top:35px;
+    }
+    .join_submit{
+        margin-left:7%;
+    }
+    /*sitemap*/
+    #sitemap {
+        display: none;
+    }
+    /*footer*/
+    #footer {
+        clear: both;
+        float: left;
+        margin-top: 80px;
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+    #footer .footer_contents {
+        display: none;
+    }
+    #footer .footer_logo {
+        font-size: 0.75em;
+    }
+    #footer .footer_mob {
+        display: block;
+    }
+    #footer strong {
+        text-decoration: underline;
+    }
+    .footer_mob p,
+    .footer_mob a {
+        margin-bottom: 8px;
+    }
+    .footer_mob a {
+        color: #fff;
+    }
+    #footer{
+        margin-top: 0;
+    }
+
+
+    /*profile*/
+
+        #profile{
+            /*display:none;*/
+            position: absolute;
+            /*float:right;*/
+            top:-200%;
+            right:0;
+            /*z-index: 9999;*/
+            width: 100%;
+            height:800px;
+            background: rgba(0,0,0,0.7);
+        }
+
+        #profile .profile_box{
+            float: right;
+            width: 75%;
+            background: #eee;
+        }
+        #profile .profile_box .profile_area{
+            /*background-color: #f0f;*/
+            padding:10px 0;
+        }
+        #profile .profile_area .profile_img{
+            width:95%;
+            padding:10px 2.5%;
+        }
+        #profile .profile_area .profile_img p{
+            display: block;
+            width:150px;
+            height:150px;
+            margin:0 auto;
+            border-radius: 100%;
+            /*background-color: blue;*/
+            background:url(../image/profileimage.png)0 0 no-repeat;
+            -webkit-background-size: 150px;
+            background-size: 150px;
+            overflow: hidden;
+        }
+        #profile .profile_area .profile_img .image_circleate img{
+            display:block;
+            width:100%;
+        }
+        #profile .profile_area .profile_userinfo{
+            text-align:center;
+        }
+        #profile .profile_devide{
+            width:92%;
+            margin:5px 4%;
+            height:3px;
+            background-color: #fff;
+        }
+        #profile .profile_usermenu{
+            width: 95%;
+            padding:10px 2.5%;
+        }
+        #profile .profile_usermenu ul{
+
+        }
+
+        #profile .profile_usermenu ul li{
+            /*background-color: #ccc;*/
+            margin-bottom: 10px;
+            border-bottom:2px solid #eee;
+    
+        }
+        #profile .profile_usermenu ul li a{
+            /*font-family: 'Nanum Gothic', serif;*/
+            font-size:1.5em;
+            padding:5px 10px;
+            /*background-color: #f0f;*/
+            display:block;
+            text-align:center;
+            font-weight: 400;
+
+        }
+    
+        #profile .profile_btn{
+            font-size:1.25em;
+            width:49%;
+            border: none;
+            height:50px; 
+            background: transparent;
+            margin: 0;
+
+        }
+        #profile .btn_Logout{
+            border-left: 1px solid #eee;
+        }
+}/*this.mobile Resolution*/
+
