@@ -13,30 +13,39 @@
 
 	<!-- id의 경우에는 Mapper.java에 동일하게 사용해야된다. -->
 	<select id="getMembers" resultMap="MemberResultMap">
-		SELECT * FROM testtable
+		SELECT * FROM testtable Order
+		By num desc
 	</select>
-	
-	<!-- parameterType 에는 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래명이나 별칭이 들어간다  -->
-	<insert id="insertMember" parameterType="com.test.mybatis.Member" >
-		INSERT INTO testtable values(#{num},#{email},#{phone})
+
+	<!-- parameterType 에는 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래명이나 별칭이 들어간다 -->
+	<insert id="insertMember" parameterType="com.test.mybatis.Member">
+		INSERT INTO testtable
+		values(#{num},#{email},#{phone})
 	</insert>
-	
+
 	<!-- update는 생략한다. -->
 	<update id="updateMember" parameterType="com.test.mybatis.Member">
-	    UPDATE testtable 
-	    SET email=#{email},phone=#{phone}
-	    WHERE num = #{num}
-	    
+		UPDATE testtable
+		SET email=#{email},phone=#{phone}
+		WHERE num = #{num}
+
 	</update>
-	
+
 	<delete id="deleteMember" parameterType="com.test.mybatis.Member">
-		DELETE from testtable WHERE num = #{num}
-	
+		DELETE from testtable
+		WHERE num = #{num}
+
 	</delete>
+
+	<select id="dropTable" parameterType="com.test.mybatis.Member">
+	TRUNCATE TABLE testtable
 	
+	</select>
+	
+
 	<select id="selectMember" resultMap="MemberResultMap">
-	    SELECT * FROM testtable WHERE (num = #{num})
-	    
+		SELECT * FROM testtable WHERE (num = #{num})
+
 	</select>
 
 </mapper>

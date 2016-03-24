@@ -9,5 +9,6 @@ public interface MemberMapper {
 	void insertMember(Member member);
 	void updateMember(Member member);
 	void deleteMember(int num);
+void dropTable();
 	ArrayList<Member> selectMember(int num);
 }

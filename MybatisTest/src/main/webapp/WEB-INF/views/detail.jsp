@@ -10,7 +10,7 @@
 </head
 >
 <body>
-<form  method="post" action="/controller/insert">
+<form  method="post" action="/www/insert">
 	<table border="1">
 		<tr>
 			<td>이름</td>
@@ -22,7 +22,8 @@
 		
 		<c:forEach items="${result}" var="member">
 			<tr>
-				<td><a href="http://daearcdo.cafe24.com/controller/list?num=${member.num}">${member.num}</a></td>
+<%-- 				<td><a href="http://daearcdo.cafe24.com/www/list?num=${member.num}">${member.num}</a></td> --%>
+				<td><a href="http://localhost:8080/controller/list?num=${member.num}">${member.num}</a></td>
 				<td>${member.email}</td>
 				<td>${member.phone}</td>
 				<td><input type="button" value="수정" onclick=""> <input

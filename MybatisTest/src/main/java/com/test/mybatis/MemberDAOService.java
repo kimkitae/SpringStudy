@@ -28,6 +28,13 @@ public class MemberDAOService implements MemberDAO {
 		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
 		memberMapper.insertMember(member);
 	}
+	
+	@Override
+	public void dropTable(){
+		MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+		memberMapper.dropTable();
+		
+	}
 
 	@Override
 	public void updateMember(Member member) {

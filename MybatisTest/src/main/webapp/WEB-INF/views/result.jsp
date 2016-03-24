@@ -13,9 +13,9 @@
 
 <table border="1">
 	 <tr>
-		 <td width="50px" align="center">num</td>
-		 <td align="center">email</td>
-		 <td align="center">phone</td>
+		 <td width="50px" align="center">번호</td>
+		 <td align="center">단어</td>
+		 <td align="center">뜻</td>
 	 </tr>
 	 <!-- result는 contoller의 addObject로 부터 가져온다. -->
 	 <c:forEach items="${result}" var="member">

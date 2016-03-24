@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.test.mybatis.Member;
 import com.test.mybatis.MemberDAOService;
@@ -37,6 +39,14 @@ public class MybatisController {
 		ModelAndView result = new ModelAndView();
 		//addObject view�� �Ѿ�� ������
 		List<Member> memberList = memberDAOService.getMembers();
+		
+		if(memberList.size() < 1){
+			result.addObject("count",1);
+			
+		}else{
+			
+			result.addObject("count",memberList.get(0).getNum()+1);
+		}
 		result.addObject("result", memberList);
 		result.setViewName("main");
 		return result;
@@ -57,9 +67,14 @@ public class MybatisController {
 		
 		//�Ʒ��κ��� select���� result.jsp���Ͽ� �����ֱ� ���� �ǻ��.
 		ModelAndView result = new ModelAndView();
+	   RedirectView rv = new RedirectView();
+//	   rv.setUrl("http://localhost:8080/controller/main");
+	   rv.setUrl("http://daearcdo.cafe24.com/www/main");
+	   
 		List<Member> memberList = memberDAOService.getMembers();
+		System.out.println(memberList.size());
 		result.addObject("result", memberList);
-		result.setViewName("result");
+		result.setView(rv);
 		return result;
 	}
 	
@@ -95,9 +110,13 @@ public class MybatisController {
 		System.out.println(request.getParameter("num"));
 		memberDAOService.updateMember(member);
 		System.out.println("수정완료");
+		RedirectView rv = new RedirectView();
+		
+//		rv.setUrl("http://localhost:8080/controller/main");
+		rv.setUrl("http://daearcdo.cafe24.com/www/main");
 		List<Member> memberList = memberDAOService.getMembers();
 		result.addObject("result", memberList);
-		result.setViewName("main");
+		result.setView(rv);
 		return result;
 	}
 	@RequestMapping(value ="delete", method = RequestMethod.GET)
@@ -111,11 +130,39 @@ public class MybatisController {
 		int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println(num);
 		memberDAOService.deleteMember(num);
-		
+		RedirectView rv = new RedirectView();
+//		rv.setUrl("http://localhost:8080/controller/main");
+		rv.setUrl("http://daearcdo.cafe24.com/www/main");
 		System.out.println("삭제완료");
 		List<Member> memberList = memberDAOService.getMembers();
 		result.addObject("result", memberList);
-		result.setViewName("main");
+		result.setView(rv);
 		return result;
 	}
+	@RequestMapping(value ="swipe", method= RequestMethod.GET)
+	public ModelAndView swipe(Locale locale, Model model) {
+		logger.info("Welcome main.", locale);
+
+		// view ȭ���� main.jsp�� DB�κ��� �о�� �����͸� �����ش�.
+		ModelAndView result = new ModelAndView();
+		
+		List<Member> memberList = memberDAOService.getMembers();
+		result.addObject("result", memberList);
+		result.setViewName("swipedrow");
+		return result;
+	}
+	@RequestMapping(value ="/tabledrop", method = RequestMethod.GET)
+	public ModelAndView tabledrop(HttpServletRequest request){
+		
+		ModelAndView result = new ModelAndView();
+		memberDAOService.dropTable();
+		RedirectView rv = new RedirectView();
+//		rv.setUrl("http://localhost:8080/controller/main");
+		rv.setUrl("http://daearcdo.cafe24.com/www/main");
+		
+		result.setView(rv);
+		return result;
+	}
+	
+	
 }

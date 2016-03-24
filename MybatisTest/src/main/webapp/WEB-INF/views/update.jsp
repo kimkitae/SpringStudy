@@ -10,12 +10,13 @@
 </head
 >
 <body>
+<!-- <form  method="post" action="http://daearcdo.cafe24.com/www/update"> -->
 <form  method="post" action="http://localhost:8080/controller/update">
 	<table border="1">
 		<tr>
-			<td>이름</td>
-			<td>이메일</td>
-			<td>전화번호</td>
+			<td>번호</td>
+			<td>단어</td>
+			<td>뜻</td>
 			<td></td>
 		</tr>
 
@@ -26,6 +27,7 @@
 				<td><input type="text" name="email" value="${member.email}" > </td>
 				<td><input type="text" name="phone" value="${member.phone}"></td>
 				<td><input type="submit" value="수정" > 
+<%-- 				<input type="button" value="삭제" onclick="location.href='http://daearcdo.cafe24.com/www/delete?num=${member.num}'"></td> --%>
 				<input type="button" value="삭제" onclick="location.href='http://localhost:8080/controller/delete?num=${member.num}'"></td>
 			</tr>
 		</c:forEach>
