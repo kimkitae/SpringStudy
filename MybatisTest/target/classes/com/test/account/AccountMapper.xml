@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.account.AccountMapper">
+
+	<resultMap type="Account" id="AccountResultMap">
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="permission" column="permission" />
+	</resultMap>
+
+	<!-- id의 경우에는 Mapper.java에 동일하게 사용해야된다. -->
+	<select id="getAccounts" resultMap="AccountResultMap">
+		SELECT * FROM account
+	</select>
+
+	<!-- parameterType 에는 구문에 전달될 파라미터의 패키지 경로를 포함한 전체 클래명이나 별칭이 들어간다 -->
+	<insert id="insertAccount" parameterType="com.test.account.Account">
+		INSERT INTO account
+		values(#{id},#{pwd},#{permission})
+	</insert>
+
+	<!-- update는 생략한다. -->
+	<update id="updateAccount" parameterType="com.test.account.Account">
+		UPDATE account
+		SET pwd=#{pwd},permission=#{permission}
+		WHERE id = #{id}
+
+	</update>
+
+	<delete id="deleteAccount" parameterType="com.test.account.Account">
+		DELETE from account
+		WHERE id = #{id}
+
+	</delete>
+
+	<select id="dropTable" parameterType="com.test.account.Account">
+	TRUNCATE TABLE account
+	
+	</select>
+	
+
+	<select id="selectAccount" resultMap="AccountResultMap">
+		SELECT * FROM account WHERE (id = #{id})
+
+	</select>
+	
+
+</mapper>
