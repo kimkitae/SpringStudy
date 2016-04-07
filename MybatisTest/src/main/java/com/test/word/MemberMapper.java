@@ -1,8 +1,8 @@
-package com.test.mybatis;
+package com.test.word;
 
 import java.util.ArrayList;
 
-import com.test.mybatis.Member;
+import com.test.word.Member;
 
 public interface MemberMapper {
 	ArrayList<Member> getMembers();

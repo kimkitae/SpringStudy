@@ -1,7 +1,9 @@
-package com.test.mybatis;
+package com.test.word;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 public class MemberDAOService implements MemberDAO {
 
 	@Autowired
+	@Resource(name="sqlSession")
 	private SqlSession sqlSession;
 
 	@Override

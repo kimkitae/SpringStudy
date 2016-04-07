@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.*,com.test.mybatis.*"%>
+<%@ page import="java.util.*,com.test.word.*"%>
 <%
  response.setHeader("Pragma", "No-cache"); 
  response.setDateHeader("Expires", 0); 
@@ -104,14 +104,16 @@ header {
 
 </head>
 
-<header class="nav-down"> <a
-		href="http://daearcdo.cafe24.com/www/main">단어 관리 페이지 이동</a> </header>
+<header class="nav-down"> 
+	<p><a href="http://localhost:8080/controller/main">단어 관리 페이지 이동</a> // <a href="http://localhost:8080/controller/signup">회원 가입 페이지 이동</a> // <a href="http://localhost:8080/controller/signin">로그인 페이지 이동</a>  // <a href="http://localhost:8080/controller/logout">로그아웃</a></p>
+<!-- 	<p><a href="http://daearcdo.cafe24.com/www/main">단어 관리 페이지 이동</a> // <a href="http://daearcdo.cafe24.com/www/signupmain">회원 가입 페이지 이동</a></p> -->
+	
+	</header>
 <body>
 
 	
 
 
-	<!-- <p><a href="http://localhost:8080/controller/main">단어 관리 페이지 이동</a></p> -->
 
 	<div id="wrapper">
 		<c:forEach items="${result}" var="member">

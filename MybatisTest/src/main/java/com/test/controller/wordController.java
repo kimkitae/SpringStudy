@@ -17,17 +17,22 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.test.mybatis.Member;
-import com.test.mybatis.MemberDAOService;
+import com.test.word.*;
+import com.test.word.MemberDAOService;
 
 @Controller
-public class MybatisController {
+public class wordController {
+	
+	private final String dev = "http://localhost:8080/controller/";
+	private final String web = "http://daearcdo.cafe24.com/www/";
+	private String homeurl = dev;
+	
 	
 	// 
 	@Autowired
 	private MemberDAOService memberDAOService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(MybatisController.class);
+	private static final Logger logger = LoggerFactory.getLogger(wordController.class);
 	
 	
 	//���� ����ȭ��.
@@ -48,7 +53,7 @@ public class MybatisController {
 			result.addObject("count",memberList.get(0).getNum()+1);
 		}
 		result.addObject("result", memberList);
-		result.setViewName("main");
+		result.setViewName("word/main");
 		return result;
 	}
 	
@@ -69,7 +74,7 @@ public class MybatisController {
 		ModelAndView result = new ModelAndView();
 	   RedirectView rv = new RedirectView();
 //	   rv.setUrl("http://localhost:8080/controller/main");
-	   rv.setUrl("http://daearcdo.cafe24.com/www/main");
+	   rv.setUrl(homeurl+"main");
 	   
 		List<Member> memberList = memberDAOService.getMembers();
 		System.out.println(memberList.size());
@@ -113,7 +118,7 @@ public class MybatisController {
 		RedirectView rv = new RedirectView();
 		
 //		rv.setUrl("http://localhost:8080/controller/main");
-		rv.setUrl("http://daearcdo.cafe24.com/www/main");
+		rv.setUrl(homeurl+"main");
 		List<Member> memberList = memberDAOService.getMembers();
 		result.addObject("result", memberList);
 		result.setView(rv);
@@ -132,7 +137,7 @@ public class MybatisController {
 		memberDAOService.deleteMember(num);
 		RedirectView rv = new RedirectView();
 //		rv.setUrl("http://localhost:8080/controller/main");
-		rv.setUrl("http://daearcdo.cafe24.com/www/main");
+		rv.setUrl(homeurl+"main");
 		System.out.println("삭제완료");
 		List<Member> memberList = memberDAOService.getMembers();
 		result.addObject("result", memberList);
@@ -148,7 +153,7 @@ public class MybatisController {
 		
 		List<Member> memberList = memberDAOService.getMembers();
 		result.addObject("result", memberList);
-		result.setViewName("swipedrow");
+		result.setViewName("word/swipedrow");
 		return result;
 	}
 	@RequestMapping(value ="/tabledrop", method = RequestMethod.GET)
@@ -158,7 +163,7 @@ public class MybatisController {
 		memberDAOService.dropTable();
 		RedirectView rv = new RedirectView();
 //		rv.setUrl("http://localhost:8080/controller/main");
-		rv.setUrl("http://daearcdo.cafe24.com/www/main");
+		rv.setUrl(homeurl+"main");
 		
 		result.setView(rv);
 		return result;

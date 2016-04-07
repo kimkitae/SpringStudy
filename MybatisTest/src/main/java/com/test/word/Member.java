@@ -1,4 +1,4 @@
-package com.test.mybatis;
+package com.test.word;
 
 public class Member {
 	private int num;

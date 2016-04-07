@@ -1,4 +1,4 @@
-package com.test.mybatis;
+package com.test.word;
 
 import java.util.ArrayList;
 
